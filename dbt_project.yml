@@ -39,3 +39,6 @@ models:
   dbt_fundamentals_joacojabif:
     staging:
       +materialized: view
+
+    marts:
+      +materialized: table
