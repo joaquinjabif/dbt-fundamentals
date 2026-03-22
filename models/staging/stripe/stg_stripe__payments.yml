@@ -1,0 +1,25 @@
+models:
+  - name: stg_stripe__payments
+    columns:
+      - name: PAYMENT_ID
+        data_tests:
+          - unique
+          - not_null
+      - name: ORDER_ID
+        data_tests:
+          - not_null
+      - name: PAYMENT_METHOD
+        data_tests:
+          - not_null
+      - name: STATUS
+        data_tests:
+          - not_null
+      - name: AMOUNT
+        data_tests:
+          - not_null
+      - name: CRATED_AT
+        data_tests:
+          - not_null
+      - name: _BATCHED_AT
+        data_tests:
+          - not_null
