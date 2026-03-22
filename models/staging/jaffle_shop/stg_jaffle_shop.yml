@@ -1,0 +1,41 @@
+models:
+  - name: stg_jaffle_shop__customers
+    columns:
+      - name: customer_id
+        description: A unique identifier for each customer.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        description: The first name of the customer.
+      - name: last_name
+        description: The last name of the customer.
+  - name: stg_jaffle_shop__orders
+    description: This model represents the orders placed by customers in the Jaffle Shop. It includes details about each order, such as the order ID, customer ID, order date, and order status. This model is essential for tracking customer purchases and understanding order fulfillment status.
+    columns:
+      - name: order_id
+        description: A unique identifier for each order.
+        data_tests:
+          - unique
+          - not_null
+      - name: order_status
+        description: The current status of the order, indicating its progress in the fulfillment process.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - completed
+                  - shipped
+                  - returned
+                  - placed
+                  - return_pending
+      - name: customer_id
+        description: The identifier for the customer who placed the order.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_jaffle_shop__customers')
+                field: customer_id
+      - name: order_date
+        description: The date when the order was placed.
